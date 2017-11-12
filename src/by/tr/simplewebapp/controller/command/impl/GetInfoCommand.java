@@ -1,6 +1,8 @@
 package by.tr.simplewebapp.controller.command.impl;
 
 import by.tr.simplewebapp.controller.command.CommandDispatcher;
+import by.tr.simplewebapp.controller.command.constant.AttributeName;
+import by.tr.simplewebapp.controller.command.constant.JspPath;
 import by.tr.simplewebapp.controller.exception.ControllerException;
 import by.tr.simplewebapp.entity.Person;
 import by.tr.simplewebapp.service.PersonService;
@@ -17,8 +19,8 @@ import java.io.IOException;
 public class GetInfoCommand implements CommandDispatcher {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ControllerException {
-        String name =  request.getParameter("name");
-        String surname = request.getParameter("surname");
+        String name =  request.getParameter(AttributeName.NAME);
+        String surname = request.getParameter(AttributeName.SURNAME);
 
         Person person;
 
@@ -30,9 +32,9 @@ public class GetInfoCommand implements CommandDispatcher {
             throw new ControllerException(ex);
         }
 
-        request.setAttribute("person", person);
+        request.setAttribute(AttributeName.PERSON, person);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/infopage.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(JspPath.INFO_PAGE);
         dispatcher.forward(request,response);
     }
 }

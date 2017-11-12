@@ -2,9 +2,6 @@ package by.tr.simplewebapp.entity;
 
 import java.io.Serializable;
 
-/**
- * Created by Lenovo on 11/10/2017.
- */
 public class Person implements Serializable {
     private int id;
     private String name;
