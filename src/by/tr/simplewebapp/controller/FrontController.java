@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import static by.tr.simplewebapp.controller.command.constant.AttributeName.*;
 import static by.tr.simplewebapp.controller.command.constant.CommandType.SEND_ERROR;
+import static by.tr.simplewebapp.controller.command.constant.JspPath.*;
 
 
 public class FrontController extends HttpServlet {
@@ -30,7 +31,7 @@ public class FrontController extends HttpServlet {
             commandDispatcher.execute(request, response);
         } catch (ControllerException ex) {
             String exceptionMessage = ex.getMessage();
-            response.sendRedirect("FrontController?" +COMMAND + "=" + SEND_ERROR + "&" + MESSAGE + "=" + exceptionMessage);
+            response.sendRedirect(FRONT_CONTROLLER_PATH +SIGN_BEFORE_ATTRIBUTES +COMMAND + PARAMETER_VALUE_DIVIDER + SEND_ERROR + ATTRIBUTES_DIVIDER + MESSAGE + PARAMETER_VALUE_DIVIDER + exceptionMessage);
         }
 
     }

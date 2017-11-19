@@ -42,7 +42,7 @@ public class PersonDAOImpl implements PersonDAO{
             }
 
         }catch (SQLException ex) {
-            throw new DAOException("Find Person SQL Exception", ex);
+            throw new DAOException(ex);
         }
         return person;
 
