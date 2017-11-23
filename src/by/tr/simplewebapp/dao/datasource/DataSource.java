@@ -28,7 +28,8 @@ public final class DataSource {
             mysqlDataSource.setUser(properties.getProperty(USERNAME_ATTR_NAME));
             mysqlDataSource.setPassword(properties.getProperty(PASSWORD_ATTR_NAME));
         } catch (IOException ex){
-            mysqlDataSource = null;
+            mysqlDataSource = null;// если берешь где-то код - обрабатывай его
+            // мы проходили, что надоделать с исключениями
         }
         return mysqlDataSource;
     }
