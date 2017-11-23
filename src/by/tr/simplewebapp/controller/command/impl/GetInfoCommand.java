@@ -29,7 +29,9 @@ public class GetInfoCommand implements CommandDispatcher {
         try{
             person = personService.findByNameSurname(name,surname);
         } catch (ServiceException ex){
-            throw new ControllerException(ex);
+            throw new ControllerException(ex);// ну и зачем сервлету это твое исключение
+            // ты уже тут на слое контроля, вон, внизу форвард используешь
+            // пользователя на страницу ошибок переправить не можешь? или просто - ну хай буде и тут исключение?
         }
 
         request.setAttribute(AttributeName.PERSON, person);
