@@ -31,6 +31,7 @@ public class FrontController extends HttpServlet {
             commandDispatcher.execute(request, response);
         } catch (ControllerException ex) {
             String exceptionMessage = ex.getMessage();
+            // пользователю никогда не должны уходить внутренние сообщения системы
             response.sendRedirect(FRONT_CONTROLLER_PATH +SIGN_BEFORE_ATTRIBUTES +COMMAND + PARAMETER_VALUE_DIVIDER + SEND_ERROR + ATTRIBUTES_DIVIDER + MESSAGE + PARAMETER_VALUE_DIVIDER + exceptionMessage);
         }
 

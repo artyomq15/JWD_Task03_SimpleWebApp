@@ -20,6 +20,8 @@ public class PersonDAOImpl implements PersonDAO{
     public PersonDAOImpl(){
         DataSourceFactory dataSourceFactory = DataSourceFactory.getInstance();
         dataSource = dataSourceFactory.getDataSource().getMysqlDataSource();
+        // а если надо будет содать еще ону реализация дао - опять будет для датасорса все всойства поднимать?
+        // если ты вызываещь метод один раз, это не значит что при расширении такая ситуация сохранится
     }
 
     @Override
@@ -42,7 +44,7 @@ public class PersonDAOImpl implements PersonDAO{
             }
 
         }catch (SQLException ex) {
-            throw new DAOException(ex);
+            throw new DAOException(ex);// лючше свои исключения возвращать и со своими сообщениями
         }
         return person;
 
