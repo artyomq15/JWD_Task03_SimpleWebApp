@@ -10,6 +10,7 @@ import by.tr.simplewebapp.service.exception.ServiceException;
 public class PersonServiceImpl implements PersonService {
     @Override
     public Person findByNameSurname(String name, String surname) throws ServiceException{
+        // куда делась валидация данных в сервисе?
         Person person;
 
         DAOFactory daoFactory = DAOFactory.getInstance();
